@@ -1,0 +1,7 @@
+{
+  "ajvError" : "ajv_errors",
+  "addedSuccess" : "Added Successfully",
+   "noDataFound" : "No Data Found",
+  "ratingAdded" : "Rating Added",
+  "ratingAddedFailed" : "Rating Not Added"
+}

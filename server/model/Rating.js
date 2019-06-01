@@ -3,6 +3,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 // Schema
 var schema = new mongoose.Schema({
     userId: {type: mongoose.Schema.Types.ObjectId, require: true},
+    productId: {type: mongoose.Schema.Types.ObjectId, require: true},
     rating : {type: Number, require: true },//Stars
     title : {type: String, require: true },
     comment : {type: String},

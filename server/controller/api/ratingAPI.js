@@ -1,4 +1,5 @@
 var Rating = require('../../model/Rating');
+var Messages = require('../../validation/messages');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 function addRating(req, res) {
@@ -8,11 +9,11 @@ function addRating(req, res) {
     var reqParam = req.body;
     Rating.create(reqParam,function (err, response) {
         if (response) {
-            result.message = 'Rating Added';
+            result.message = Messages.ratingAdded;
             result.status = true;
             res.json(result);
         }else{
-            result.message = 'Rating Not Added';
+            result.message = Messages.ratingAddedFailed;
             res.json(result);
         }
     });
@@ -63,7 +64,7 @@ function getRatings(req,res){
             res.status(200);
             res.json(result);
         } else {
-            result.message = 'No Data Found';
+            result.message = Messages.noDataFound;
             res.status(200);
             res.json(result);
         }

@@ -1,9 +1,9 @@
 var requireDir = require('require-dir');
 var controllers = requireDir('./controller/api');
+var Common = require('./util/common');
+
 
 module.exports.register = function (router) {
-
-    router.route('/rating').post(controllers.ratingAPI.addRating);
-    router.route('/rating').get(controllers.ratingAPI.getRatings);
-
+    router.route('/rating').post(Common.validateRequest,controllers.ratingAPI.addRating);
+    router.route('/rating').get(Common.validateRequest,controllers.ratingAPI.getRatings);
 };
