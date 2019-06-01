@@ -1,0 +1,24 @@
+{
+  "name": "rating_system",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Sagar Chaudhari <chaudharisagard@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "dependencies": {
+    "bootstrap": "3.0.0",
+    "jquery" : "latest",
+    "angular" : "1.6.5",
+    "angular-ui-router":"1.0.3",
+    "moment": "latest"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
