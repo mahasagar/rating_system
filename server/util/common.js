@@ -17,7 +17,7 @@ async function validateRequest(req,res,next) {
         params = req.body;
     }
     var route = req.route.path.split('/');
-    route = route[route.length -1 ].toUpperCase();
+    route = route[1].toUpperCase();
     var schema = apiParamValidation[route][req.method];
     var valid = await ajv.validate(schema, params);
     if (!valid) {

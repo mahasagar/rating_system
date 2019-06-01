@@ -71,9 +71,43 @@ function getRatings(req,res){
     });
 }
 
+function updateRating(req,res){
+    var result = {
+        status : false
+    };
+    var ratingId = req.params.id;
+    var reqParam = req.body;
+    var findQuery = {
+        _id : ratingId
+    };
+    var updateQuery = {
+        updatedBy : reqParam.userId
+    };
+     //TODO: JSON Mapper to be added
+    if(reqParam.comment){
+        updateQuery.comment = reqParam.comment;
+    }
+    if(reqParam.title){
+        updateQuery.title = reqParam.title;
+    }
+    if(reqParam.rating){
+        updateQuery.rating = reqParam.rating;
+    }
+    Rating.update(findQuery,{ $set :  updateQuery },function (err, response) {
+        if (response) {
+            result.message = Messages.updatedSuccessfully;
+            result.status = true;
+            res.json(result);
+        }else{
+            result.message = Messages.updateFailed;
+            res.json(result);
+        }
+    });
+}
 
 module.exports.getRatings = getRatings;
 module.exports.addRating = addRating;
+module.exports.updateRating = updateRating;
 
 
 

@@ -2,26 +2,36 @@
   "RATING" : {
     "POST" : {
       "properties": {
-        "rating" : { "type": "number" },
-        "comment" : { "type": "string" },
         "userId" : { "type": "string" },
         "productId" : { "type" : "string" },
+        "orderId" : { "type" : "string" },
+        "rating" : { "type": "number" , "enum" : [1,2,3,4,5]},
         "title" : { "type": "string" },
+        "comment" : { "type": "string" },
         "rateFeatures" : {
           "type": "array",
           "properties": {
             "title" : {"type": "string"},
-            "rating" : {"type": "number"}
+            "rating" : {"type": "number","enum" : [1,2,3,4,5]}
           }
         }
       },
-      "required": ["userId","rating","title"]
+      "required": ["userId","rating","title","orderId"]
     },
     "GET" : {
       "properties": {
         "productId" : {"type": "string"}
       },
       "required": ["productId"]
+    },
+    "PUT" : {
+      "properties": {
+        "userId" : {"type": "string"},
+        "comment" : { "type": "string" },
+        "title" : { "type": "string" },
+        "rating" : { "type": "number" , "enum" : [1,2,3,4,5]}
+      },
+      "required": ["userId"]
     }
   }
 

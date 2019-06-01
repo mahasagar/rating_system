@@ -7,7 +7,7 @@ var schema = new mongoose.Schema({
     rating : {type: Number, require: true },//Stars
     title : {type: String, require: true },
     comment : {type: String},
-    images : [{type: String}],
+    images : {type: [String] },
     rateFeatures : [{
         title : {type: String},
         rating :  {type: Number}
@@ -16,6 +16,7 @@ var schema = new mongoose.Schema({
     status : { type : String , enum : ['NEW','VERIFIED','REJECTED'], default : 'NEW'},
     parentCommentId : {type: mongoose.Schema.Types.ObjectId},
     updatedAt: {type: Date},
+    updatedBy: {type: mongoose.Schema.Types.ObjectId},
     createdDate: {type: Date, require: true, default: Date.now}
 });
 
