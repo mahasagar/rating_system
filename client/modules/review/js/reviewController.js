@@ -23,9 +23,7 @@ angular.module('ReviewCrtl', [])
             $scope.ratingModel.rating = val;
         }
         function getProduct(cb){
-            var query ={
-               productId : productId
-            };
+            var query ={};
             $scope.productData = null;
             Main.getProduct(productId,query,function (err,result) {
                   $scope.productData = result;
