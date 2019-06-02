@@ -1,0 +1,71 @@
+<div class="container">
+   <div class="row medi_box-item_details card-1" style="margin-top: 20px" >
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+         <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+            <img  ng-if="productData.productIcon" ng-src="{{productData.productIcon}}" class="img-responsive productImage">
+         </div>
+         <div class="col-md-5 col-sm-5 col-lg-5 col-xs-12">
+            <div class="deals_details_cond">
+               <p class="delas_details_title"><b>{{productData.name}}</b></p>
+               <ul class="medi_breadcrumb">
+                  <li><a class="camelCaseText">{{productData.productType}}</a></li>
+                  <li><a class="camelCaseText">{{productData.brand}}</a></li>
+               </ul>
+               <div class="m20">
+                  <p class="medi_compos"><b>Description:</b></p>
+                  <p class="medi_compos1 medi_composition_item_desc">{{productData.description}}</p>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-4 col-sm-4 col-lg-4 col-xs-12">
+            <ul class="list-inline container-fluid">
+               <li class="col-md-4 ">
+                  <p class="label_title"><b>MRP</b></p>
+                  <p class="medi_compos1">{{productData.mrp |currency:'&#8377;'}}</p>
+               </li>
+               <li class="col-md-4">
+                  <p class="label_title"><b>Dimensions</b></p>
+                  <p class="medi_compos1">{{productData.dimensions}}</p>
+               </li>
+               <li class="col-md-4">
+                  <p class="label_title"><b>Color</b></p>
+                  <p class="medi_deal_offer">{{productData.color}}</p>
+               </li>
+            </ul>
+            <br>
+            <ul class="list-inline container-fluid">
+               <li class="col-md-4 pull-right ">
+                  <button class="review-button" ng-click="writeReview()"> Add a review</button>
+               </li>
+            </ul>
+
+         </div>
+      </div>
+   </div>
+
+   <div style="margin-top: 20px">
+      <div data-hook="ryp-review-stars"
+           class="a-section ryp__review-stars">
+         <h3 class="a-spacing-micro">
+            <span><span>Overall rating</span></span>
+            <div star-rating rating-value="5" max="5" ></div>
+         </h3>
+      </div>
+      <div class="comment" ng-repeat="oneComment in ratings">
+         <div class="comment-box card-1" >
+            <div star-rating rating-value="oneComment.rating" max="5" ></div>
+            <div class="rating-title"><b>{{ oneComment.title }}</b></div>
+            <span class="rating-text">{{ oneComment.comment }}</span>
+            <div class="comment-footer">
+               <div class="comment-info">
+               <span class="comment-author">
+                 <a ng-if="!oneComment.user ">Anonymous</a>
+                 <a ng-if="oneComment.user" >{{oneComment.user[0].name }}</a>
+               </span>
+               <span class="comment-date">{{ oneComment.createdDate | formatDate : 'MMMM Do YYYY, h:mm A'}}</span>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,9 +1,9 @@
 'use strict';
 
-var App = angular.module('ratingApp', ['ui.router']);
+var App = angular.module('ratingApp', ['ui.router','commonServices','appMain','appReview']);
 
 App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-//    $urlRouterProvider.otherwise("/app/home");
+    $urlRouterProvider.otherwise("/app/home");
     $stateProvider
         .state('app', {
             url: "/app",
@@ -11,8 +11,6 @@ App.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
         })
 }]);
 
-App.controller('appCtrl', function ($scope,$state,$rootScope) {
-
-   console.log('welcome to APP Crtl'+JSON.stringify($rootScope.user));
-
+App.controller('appCtrl', function ($state) {
+    $state.go('app.home');
 });

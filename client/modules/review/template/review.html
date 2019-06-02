@@ -1,0 +1,50 @@
+<div class="container">
+   <div data-hook="ryp-review-stars"
+        class="a-section ryp__review-stars">
+      <h3 class="a-spacing-micro">
+         <span><span>Review</span></span>
+      </h3>
+   </div>
+   <div class="row medi_box-item_details card-1" style="margin-top: 20px" >
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+         <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+            <img  ng-if="productData.productIcon" ng-src="{{productData.productIcon}}" class="productImage" style="height: 100px;">
+         </div>
+         <div class="col-md-5 col-sm-5 col-lg-5 col-xs-12">
+            <div class="deals_details_cond">
+               <p class="delas_details_title"><b>{{productData.name}}</b></p>
+               <div class="m20">
+                  <p class="medi_compos"><b>Description:</b></p>
+                  <p class="medi_compos1 medi_composition_item_desc">{{productData.description}}</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="comment-form card-1" >
+      <form class="form" name="form" ng-submit="form.$valid && addOrUpdateRating(ratingModel)">
+         <div class="form-row">
+            <div star rating-value="ratingVal" max="max" on-hover="onHover"
+                 on-leave="onLeave" readonly="{{readonly}}" style="font-size: 25px;"></div>
+            <input
+                    class="input"
+                    ng-model="ratingModel.title"
+                    placeholder="Title..."
+                    style="margin: 5px"
+                    required />
+            <textarea
+                class="input"
+                ng-model="ratingModel.comment"
+                placeholder="Add comment..."
+                required></textarea>
+         </div>
+
+         <div class="form-row">
+            <input type="submit" ng-if="!ratingModel" value="Add Review">
+            <input type="submit" ng-if="ratingModel" value="Update Review">
+         </div>
+      </form>
+   </div>
+
+</div>

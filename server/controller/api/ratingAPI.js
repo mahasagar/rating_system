@@ -1,4 +1,5 @@
 var Rating = require('../../model/Rating');
+var Product = require('../../model/Product');
 var Messages = require('../../validation/messages');
 var ObjectId = require('mongoose').Types.ObjectId;
 
@@ -19,13 +20,17 @@ function addRating(req, res) {
     });
 }
 
-function getRatings(req,res){
+async function getRatings(req,res){
      var result = {
         status : false
     };
-    var reqParam = req.body;
-    var findQuery = {};
-
+    var reqParam = req.query;
+    var findQuery = {
+        productId : new ObjectId(reqParam.productId)
+    };
+    if(reqParam.userId){
+        findQuery.userId = new ObjectId(reqParam.userId)
+    }
     var pageNo = reqParam.page ?  parseInt(reqParam.page) : 1;
     var pageSize = reqParam.pageSize ? parseInt(reqParam.pageSize) : 10;
     var limitQuery = { '$limit' : pageSize };

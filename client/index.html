@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="sagar chaudhari" />
-    <title><Rating></Rating> App</title>
+    <title> Rating App</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
@@ -17,14 +17,24 @@
     <script src="../lib/moment/min/moment.min.js"></script>
 
     <script src="./app.js"></script>
+    <script src="./modules/common/commonServices.js"></script>
+
+    <script src="./modules/main/index.js"></script>
+    <script src="./modules/main/js/mainController.js"></script>
+    <script src="./modules/main/services/mainService.js"></script>
+
+    <script src="./modules/review/index.js"></script>
+    <script src="./modules/review/js/reviewController.js"></script>
+    <script src="./modules/review/services/reviewService.js"></script>
 
 </head>
 <body class="container" ng-controller="appCtrl">
 
- <div class="center" >
-     Welcome to Rating App
- </div>
-
- <div style="position: relative;" ui-view></div>
+<nav class="navbar navbar-default row">
+    <div>
+        <div class="col-xs-12 center title-app">Rating App</div>
+    </div>
+</nav>
+<div style="position: relative;" ui-view></div>
 </body>
 </html>
