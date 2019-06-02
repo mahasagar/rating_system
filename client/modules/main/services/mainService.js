@@ -19,7 +19,7 @@ angular.module('mainServices', [])
             var URL = "/api/rating";
             Common.callAPI(method,URL,req,function(response){
                 if(response.data.status){
-                    callback(null,response.data.response);
+                    callback(null,response.data);
                 }else{
                     callback(null,false);
                 }

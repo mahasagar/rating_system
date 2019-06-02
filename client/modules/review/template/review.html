@@ -25,8 +25,10 @@
    <div class="comment-form card-1" >
       <form class="form" name="form" ng-submit="form.$valid && addOrUpdateRating(ratingModel)">
          <div class="form-row">
-            <div star rating-value="ratingVal" max="max" on-hover="onHover"
-                 on-leave="onLeave" readonly="{{readonly}}" style="font-size: 25px;"></div>
+            <div ng-if="ratingModel.rating !== null">
+               <div star rating-value="ratingModel.rating" max="max" on-hover="onHover"
+                    on-leave="onLeave" readonly="{{readonly}}" style="font-size: 25px;"></div>
+            </div>
             <input
                     class="input"
                     ng-model="ratingModel.title"
@@ -41,8 +43,8 @@
          </div>
 
          <div class="form-row">
-            <input type="submit" ng-if="!ratingModel" value="Add Review">
-            <input type="submit" ng-if="ratingModel" value="Update Review">
+            <input type="submit" ng-if="!ratingModel || !ratingModel._id" value="Add Review">
+            <input type="submit" ng-if="ratingModel && ratingModel._id" value="Update Review">
          </div>
       </form>
    </div>

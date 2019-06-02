@@ -39,7 +39,6 @@ angular.module('commonServices', [])
           }
         },
         link: function (scope, elem, attrs) {
-          elem.css("text-align", "center");
           var updateStars = function () {
             scope.stars = [];
             for (var i = 0; i < scope.max; i++) {

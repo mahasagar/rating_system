@@ -44,7 +44,13 @@ async function getRatings(req,res){
               {
                 $count: 'count'
               }
-            ]
+            ],
+            averageRating : [{
+                $group : {
+                   _id : null,
+                   avgRating: { $avg: "$rating" }
+                }
+            }]
         }
     }
     var userDataQuery = {
@@ -64,6 +70,9 @@ async function getRatings(req,res){
             result.response = responseData[0].result;
             if(responseData[0].totalCount[0]){
                 result.count = responseData[0].totalCount[0].count;
+            }
+            if(responseData[0].averageRating[0]){
+                result.avgRating = parseInt(responseData[0].averageRating[0].avgRating);
             }
             result.status = true;
             res.status(200);

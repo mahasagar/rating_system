@@ -1,7 +1,7 @@
 angular.module('HomePage', [])
     .controller('homeCtrl', function ($scope,$rootScope,$state,Main) {
         console.log('homeCtrl')
-        var userId = '5cf2b9f3a29308e6a7d04ddf';
+        var userId = '5cf2bb2ca29308e6a7d04de1';
         var productId = '5cf3354b618f59d3bb6c63de';
         function getProduct(cb){
             var query ={
@@ -19,7 +19,11 @@ angular.module('HomePage', [])
             };
             $scope.ratings= [];
             Main.getRatings(query,function (err,result) {
-                 $scope.ratings = result;
+                if(result){
+                    $scope.ratings = result.response;
+                    $scope.count = result.count;
+                    $scope.avgRating = result.avgRating;
+                }
             });
         }
         getProduct(function(product){
@@ -27,19 +31,16 @@ angular.module('HomePage', [])
                 getRatings(product._id);
             }
         })
-
-        $scope.addRating = function(oneRating){
-            var oneRating = {
-                rating : oneRating.rating,
-                comment : oneRating.comment,
-                userId : userId
-            };
-            Main.addRating(oneRating,function (err,result) {
-                  $scope.message = result;
-                  getRatings();
-            });
+        $scope.onHover = function(val){
+            $scope.hoverVal = val;
+        };
+        $scope.onLeave = function(){
+            $scope.hoverVal = null;
+        }
+        $scope.onChange = function(val){
+            $scope.avgRating = val;
         }
         $scope.writeReview = function(){
-            $state.go('app.review',{productId :'5cf3354b618f59d3bb6c63de',userId: '5cf2b9f3a29308e6a7d04ddf'});
+            $state.go('app.review',{productId : productId,userId: userId});
         }
     });

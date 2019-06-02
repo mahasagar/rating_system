@@ -8,8 +8,7 @@ angular.module('ReviewCrtl', [])
         }
 
         $scope.max = 5;
-        $scope.ratingModel = {};
-        $scope.ratingVal = 0;
+        $scope.ratingModel = { rating : 0};
         $scope.readonly = false;
         $scope.onHover = function(val){
             $scope.hoverVal = val;
@@ -18,7 +17,10 @@ angular.module('ReviewCrtl', [])
             $scope.hoverVal = null;
         }
         $scope.onChange = function(val){
-            $scope.ratingVal = val;
+            if(!$scope.ratingModel){
+                $scope.ratingModel = {};
+            }
+            $scope.ratingModel.rating = val;
         }
         function getProduct(cb){
             var query ={
@@ -37,9 +39,8 @@ angular.module('ReviewCrtl', [])
             };
             $scope.userRating = null;
             Main.getRatings(query,function (err,result) {
-                 $scope.ratingModel = result[0] ? result[0] : {};
-                 var rating = $scope.ratingModel.rating ?  $scope.ratingModel.rating : 0;
-                 $scope.onChange(rating);
+                 $scope.ratingModel = (result.response && result.response[0]) ? result.response[0] : {};
+
             });
         }
         getProduct(function(product){
@@ -53,20 +54,20 @@ angular.module('ReviewCrtl', [])
                 orderId : userId,
                 productId : productId,
                 title : oneRating.title,
-                rating : $scope.ratingVal,
+                rating : oneRating.rating,
                 comment : oneRating.comment,
                 userId : userId
             };
-            if($scope.ratingModel){
+            if($scope.ratingModel && $scope.ratingModel._id){
                 var ratingId = $scope.ratingModel._id;
                 ReviewService.updateRating(ratingId,oneRating,function (err,result) {
                      $state.go('app.home');
-                     $scope.ratingVal = 0;
+                     $scope.ratingModel = { rating : 0};
                 });
             }else{
                 ReviewService.addRating(oneRating,function (err,result) {
                      $state.go('app.home');
-                     $scope.ratingVal = 0;
+                     $scope.ratingModel = { rating : 0};
                 });
             }
         }

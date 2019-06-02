@@ -26,7 +26,7 @@ db.products.insert([{
     brand : "Knitted Jacquard Cool Fabric",
     color : "White",
     dimensions : "60W * 8H * 80D",
-    description : "- Layers – Gel memory foam, comfort foam, and high-density base foam. - Ideal for – This queen-size memory foam mattress is good ",
+    description : "Layers : Gel memory foam, comfort foam, and high-density base foam. Ideal for : This queen-size memory foam mattress is good ",
      verified : true,
     status : "ACTIVE",
     tags  : ["BED"],

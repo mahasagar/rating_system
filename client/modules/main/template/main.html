@@ -45,10 +45,13 @@
 
    <div style="margin-top: 20px">
       <div data-hook="ryp-review-stars"
-           class="a-section ryp__review-stars">
+           class="a-section ryp__review-stars" ng-if="avgRating">
          <h3 class="a-spacing-micro">
-            <span><span>Overall rating</span></span>
-            <div star-rating rating-value="5" max="5" ></div>
+            <span><span>Overall rating</span> <span class="pull-right">Total : {{count}}</span></span>
+            <div ng-if="avgRating">
+               <div star rating-value="avgRating" max="5" on-hover="onHover"
+                    on-leave="onLeave" readonly="true" style="font-size: 25px;"></div>
+            </div>
          </h3>
       </div>
       <div class="comment" ng-repeat="oneComment in ratings">
