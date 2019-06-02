@@ -93,6 +93,9 @@ function updateRating(req,res){
     if(reqParam.rating){
         updateQuery.rating = reqParam.rating;
     }
+    if(reqParam.status){
+        updateQuery.status = reqParam.status;
+    }
     Rating.update(findQuery,{ $set :  updateQuery },function (err, response) {
         if (response) {
             result.message = Messages.updatedSuccessfully;

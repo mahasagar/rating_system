@@ -29,6 +29,7 @@
         "userId" : {"type": "string"},
         "comment" : { "type": "string" },
         "title" : { "type": "string" },
+        "status" : {"enum" : ["NEW","VERIFIED","REJECTED"]},
         "rating" : { "type": "number" , "enum" : [1,2,3,4,5]}
       },
       "required": ["userId"]

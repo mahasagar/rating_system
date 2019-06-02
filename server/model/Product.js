@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
 var ObjectId = require('mongoose').Types.ObjectId;
 // Schema
+
 var schema = new mongoose.Schema({
     name : {type: String, require: true },
-    shortName : {type: String},
     brand : {type: String},
+    color : {type: String},
+    dimensions : {type: String},
     description: {type: String},
     verified : { type: Boolean },
     status : { type : String , enum : ['ACTIVE','INACTIVE'], default : 'ACTIVE'},

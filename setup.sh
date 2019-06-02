@@ -1,0 +1,1 @@
+mongo rating_app ./setup/setup.js
