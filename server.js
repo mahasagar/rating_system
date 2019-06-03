@@ -2,6 +2,7 @@ var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
+    Logger = require('./server/util/logger.js'),
     requireDir = require('require-dir'),
     config = require('./config/development'),
     path = require('path');
@@ -9,6 +10,8 @@ var express = require('express'),
 app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(Logger.requestLogger);
 
 app.use(express.static(path.join(__dirname, 'client')));
 

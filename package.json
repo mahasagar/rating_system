@@ -14,7 +14,8 @@
     "express": "4.13.4",
     "mongoose": "4.4.10",
     "nodemon": "^1.12.1",
-    "require-dir": "^0.3.2"
+    "require-dir": "^0.3.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "grunt": "^1.0.1"
